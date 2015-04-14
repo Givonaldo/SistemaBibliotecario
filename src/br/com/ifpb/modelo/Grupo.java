@@ -2,6 +2,13 @@ package br.com.ifpb.modelo;
 
 import java.util.Set;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 @Entity
 @Table(name = "GRUPOS")
 public class Grupo {
@@ -18,7 +25,7 @@ public class Grupo {
 	private String privacidade;	
 	
 	@Column(name = "ADM_GRUPO")
-	@CollectionOfElements
+	@CollectionTable
 	private Set<Cliente> administradores;
 	
 	

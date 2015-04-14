@@ -3,6 +3,13 @@ package br.com.ifpb.modelo;
 import java.util.Calendar;
 import java.util.Set;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 @Entity
 @Table(name = "CLIENTES")
 public class Cliente {
@@ -25,7 +32,7 @@ public class Cliente {
 	private String eMail;
 	
 	@Column(name = "TELEFONES_CLIENTE")
-	@CollectionOfElements
+	@CollectionTable
 	private Set<String> telefones;
 	
 	public Cliente(){}
