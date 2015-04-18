@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "CLIENTES")
@@ -20,13 +22,14 @@ public class Cliente {
 	@Column(name = "ID_CLIENTE")
 	private long id;
 	
-	@Column(name = "NOME_CLIENTE")
+	@Column(name = "NOME_CLIENTE", nullable = false)
 	private String nome;
 	
 	@Column(name = "CPF_CLIENTE")
 	private String cpf;
 	
 	@Column(name = "DATA_NASC_CLIENTE")
+	@Temporal(TemporalType.DATE)
 	private Calendar dataNascimento;
 	
 	@Column(name = "EMAIL_CLIENTE")
