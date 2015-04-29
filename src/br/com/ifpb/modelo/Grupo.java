@@ -1,5 +1,7 @@
 package br.com.ifpb.modelo;
 
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CollectionTable;
@@ -11,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "GRUPOS")
-public class Grupo {
+public class Grupo implements Serializable {
 
 	@Id
 	@GeneratedValue
@@ -29,8 +31,10 @@ public class Grupo {
 	private Set<Cliente> administradores;
 	
 	
-	public Grupo() {}
-
+	public Grupo() {
+		administradores = new HashSet<>();		
+	}
+	
 
 	public long getId() {
 		return id;
@@ -67,8 +71,8 @@ public class Grupo {
 	}
 
 
-	public void setAdministradores(Set<Cliente> administradores) {
-		this.administradores = administradores;
+	public void setAdministradores(Cliente administrador) {
+		this.administradores.add(administrador); 
 	}
 	
 	

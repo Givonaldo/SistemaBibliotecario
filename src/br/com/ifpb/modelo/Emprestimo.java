@@ -1,5 +1,6 @@
 package br.com.ifpb.modelo;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.persistence.Column;
@@ -10,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "EMPRESTIMOS")
-public class Emprestimo {
+public class Emprestimo implements Serializable {
 
 	@Id
 	@GeneratedValue

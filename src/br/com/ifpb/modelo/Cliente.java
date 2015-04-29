@@ -1,5 +1,6 @@
 package br.com.ifpb.modelo;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Set;
 
@@ -15,7 +16,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "CLIENTES")
-public class Cliente {
+public class Cliente implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
