@@ -1,4 +1,4 @@
-package br.com.ifpb.dao;
+package br.com.ifpb.modelo.dao;
 
 import br.com.ifpb.modelo.exception.EntityNullException;
 

@@ -1,7 +1,7 @@
 package br.com.ifpb.main;
 
-import br.com.ifpb.dao.EditoraDao;
-import br.com.ifpb.dao.LivroDao;
+import br.com.ifpb.modelo.dao.EditoraDao;
+import br.com.ifpb.modelo.dao.LivroDao;
 import br.com.ifpb.modelo.entities.Editora;
 import br.com.ifpb.modelo.entities.Livro;
 

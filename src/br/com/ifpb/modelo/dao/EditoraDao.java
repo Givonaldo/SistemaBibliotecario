@@ -1,4 +1,4 @@
-package br.com.ifpb.dao;
+package br.com.ifpb.modelo.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
