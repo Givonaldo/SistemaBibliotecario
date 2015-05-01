@@ -1,18 +1,21 @@
-package br.com.ifpb.modelo;
+package br.com.ifpb.modelo.entities;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CollectionOfElements;
 
 @Entity
 @Table(name = "CLIENTES")
@@ -36,11 +39,13 @@ public class Cliente implements Serializable {
 	@Column(name = "EMAIL_CLIENTE")
 	private String eMail;
 	
-	@Column(name = "TELEFONES_CLIENTE")
-	@CollectionTable
+	@Column(name = "TELEFONES_CLIENTE")	
+	@CollectionOfElements(fetch = FetchType.EAGER)
 	private Set<String> telefones;
 	
-	public Cliente(){}
+	public Cliente(){
+		telefones = new HashSet<>();
+	}
 
 	public long getId() {
 		return id;

@@ -1,4 +1,4 @@
-package br.com.ifpb.modelo;
+package br.com.ifpb.modelo.entities;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -7,16 +7,20 @@ import java.util.Set;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CollectionOfElements;
 
 @Entity
 @Table(name = "GRUPOS")
 public class Grupo implements Serializable {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_GRUPO")
 	private long id;
 	
@@ -27,7 +31,7 @@ public class Grupo implements Serializable {
 	private String privacidade;	
 	
 	@Column(name = "ADM_GRUPO")
-	@CollectionTable
+	@CollectionOfElements(fetch = FetchType.EAGER)
 	private Set<Cliente> administradores;
 	
 	

@@ -1,32 +1,33 @@
-package br.com.ifpb.modelo;
+package br.com.ifpb.modelo.entities;
 
 import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "AUTORES")
-public class Autor implements Serializable {	
+@Table(name = "DISCIPLINAS")
+public class Disciplina implements Serializable {
 
 	@Id
-	@GeneratedValue
-	@Column(name = "ID_AUTORES")
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_DISCIPLINA")
+	private long id;
 	
-	@Column(name = "NOME_AUTOR")
+	@Column(name = "NOME_DISCIPLINA")
 	private String nome;
-
-	public Autor(){ }
 	
-	public Long getId() {
+	public Disciplina(){}
+
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -36,5 +37,8 @@ public class Autor implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}	
+	}
+	
+	
+	
 }
