@@ -2,72 +2,73 @@ package br.com.ifpb.modelo.dao;
 
 import javax.persistence.EntityManager;
 
-import br.com.ifpb.modelo.entities.Editora;
+import br.com.ifpb.modelo.entities.Exemplar;
+import br.com.ifpb.modelo.entities.Telefone;
 import br.com.ifpb.modelo.exception.EntityNullException;
 
-public class EditoraDao extends Dao<Editora> {
-	
+public class ExemplarDao extends Dao<Exemplar> {
+
 	private EntityManager em;
 	
-	public EditoraDao() {
+	public ExemplarDao() {
 		em = getEM();
 	}
 	
 	@Override
-	public void add(Editora editora) throws Exception {
+	public void add(Exemplar exemplar) throws Exception {
 		try {
 			em.getTransaction().begin();
-			em.persist(editora);
+			em.persist(exemplar);
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			throw new Exception();
 		} finally {
 			em.close();
-		}
+		}			
 	}
 
 	@Override
-	public Editora read(long codigo) throws Exception {
+	public Exemplar read(long codigo) throws Exception {
 		try {
 			em.getTransaction().begin();
-			em.find(Editora.class, codigo);
+			em.find(Telefone.class, codigo);
 			em.getTransaction().commit();
-			return em.find(Editora.class, codigo);
+			return em.find(Exemplar.class, codigo);
 		} catch (Exception e) {
 
 		} finally {
 			em.close();
 		}
-		return (Editora) em;
+		return (Exemplar) em;
 	}
 
 	@Override
-	public void remove(Editora editora) throws EntityNullException {
+	public void remove(Exemplar exemplar) throws EntityNullException {
 		try {
 			em.getTransaction().begin();
-			Editora e = em.find(Editora.class, editora.getId());
+			Exemplar e = em.find(Exemplar.class, exemplar.getId());
 			em.remove(e);
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			throw new EntityNullException();
 		} finally {
 			em.close();
-		}
+		}		
 	}
 
 	@Override
-	public void upDate(Editora editora, long codigo) throws EntityNullException {
+	public void upDate(Exemplar exemplar, long codigo) throws EntityNullException {
 		try {
 			em.getTransaction().begin();
-			Editora e = em.find(Editora.class, codigo);
-			e.setNome(editora.getNome());
+			Exemplar e = em.find(Exemplar.class, codigo);
+			e.setQuantidade(exemplar.getQuantidade());		
 			em.merge(e);
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			throw new EntityNullException();
 		} finally {
 			em.close();
-		}
+		}		
 	}
 
 }

@@ -1,23 +1,20 @@
 package br.com.ifpb.modelo.dao;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 import br.com.ifpb.modelo.entities.Livro;
 import br.com.ifpb.modelo.exception.EntityNullException;
 
-public class LivroDao implements Dao<Livro>{
-
-	private final EntityManagerFactory factory;
+public class LivroDao extends Dao<Livro>{
+	
 	private EntityManager em;
-
+	
 	public LivroDao() {
-		factory = Persistence.createEntityManagerFactory("Teste");
+		em = getEM();
 	}
-
+	
+	@Override
 	public void add(Livro livro) throws Exception {
-		em = factory.createEntityManager();
 		try {
 			em.getTransaction().begin();
 			em.persist(livro);
@@ -26,12 +23,11 @@ public class LivroDao implements Dao<Livro>{
 			// throw new Exception();
 		} finally {
 			em.close();
-			factory.close();
 		}
 	}
 
+	@Override
 	public Livro read(long codigo) {
-		em = factory.createEntityManager();
 		try {
 			em.getTransaction().begin();
 			em.find(Livro.class, codigo);
@@ -41,13 +37,12 @@ public class LivroDao implements Dao<Livro>{
 
 		} finally {
 			em.close();
-			factory.close();
 		}
 		return (Livro) em;
 	}
-
+	
+	@Override
 	public void remove(Livro livro) throws EntityNullException {
-		em = factory.createEntityManager();
 		try {
 			em.getTransaction().begin();
 			Livro l = em.find(Livro.class, livro.getId());
@@ -57,12 +52,11 @@ public class LivroDao implements Dao<Livro>{
 			throw new EntityNullException();
 		} finally {
 			em.close();
-			factory.close();
 		}
 	}
-
+	
+	@Override
 	public void upDate(Livro livro, long codigo) throws EntityNullException {
-		em = factory.createEntityManager();
 		try {
 			em.getTransaction().begin();
 			Livro l = em.find(Livro.class, codigo);
@@ -75,7 +69,6 @@ public class LivroDao implements Dao<Livro>{
 			throw new EntityNullException();
 		} finally {
 			em.close();
-			factory.close();
 		}
 	}
 }

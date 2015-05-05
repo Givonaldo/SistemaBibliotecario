@@ -2,72 +2,72 @@ package br.com.ifpb.modelo.dao;
 
 import javax.persistence.EntityManager;
 
-import br.com.ifpb.modelo.entities.Editora;
+import br.com.ifpb.modelo.entities.Disciplina;
 import br.com.ifpb.modelo.exception.EntityNullException;
 
-public class EditoraDao extends Dao<Editora> {
-	
+public class DisciplinaDao extends Dao<Disciplina> {
+
 	private EntityManager em;
 	
-	public EditoraDao() {
+	public DisciplinaDao() {
 		em = getEM();
 	}
 	
 	@Override
-	public void add(Editora editora) throws Exception {
+	public void add(Disciplina disciplina) throws Exception {
 		try {
 			em.getTransaction().begin();
-			em.persist(editora);
+			em.persist(disciplina);
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			throw new Exception();
 		} finally {
 			em.close();
-		}
+		}				
 	}
 
 	@Override
-	public Editora read(long codigo) throws Exception {
+	public Disciplina read(long codigo) throws Exception {
 		try {
 			em.getTransaction().begin();
-			em.find(Editora.class, codigo);
+			em.find(Disciplina.class, codigo);
 			em.getTransaction().commit();
-			return em.find(Editora.class, codigo);
+			return em.find(Disciplina.class, codigo);
 		} catch (Exception e) {
 
 		} finally {
 			em.close();
 		}
-		return (Editora) em;
+		return (Disciplina) em;
 	}
 
 	@Override
-	public void remove(Editora editora) throws EntityNullException {
+	public void remove(Disciplina disciplina) throws EntityNullException {
 		try {
 			em.getTransaction().begin();
-			Editora e = em.find(Editora.class, editora.getId());
-			em.remove(e);
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			throw new EntityNullException();
-		} finally {
-			em.close();
-		}
-	}
-
-	@Override
-	public void upDate(Editora editora, long codigo) throws EntityNullException {
-		try {
-			em.getTransaction().begin();
-			Editora e = em.find(Editora.class, codigo);
-			e.setNome(editora.getNome());
-			em.merge(e);
+			Disciplina d = em.find(Disciplina.class, disciplina.getId());
+			em.remove(d);
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			throw new EntityNullException();
 		} finally {
 			em.close();
-		}
+		}			
+	}
+
+	@Override
+	public void upDate(Disciplina disciplina, long codigo) throws EntityNullException {
+		try {
+			em.getTransaction().begin();
+			Disciplina d = em.find(Disciplina.class, codigo);
+			d.setNome(disciplina.getNome());
+			em.merge(d);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			throw new EntityNullException();
+		} finally {
+			em.close();
+		}				
 	}
 
 }

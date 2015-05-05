@@ -11,19 +11,18 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import org.hibernate.annotations.CollectionOfElements;
 
 @Entity
 @Table(name = "CLIENTES")
 public class Cliente implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_CLIENTE")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	@Column(name = "NOME_CLIENTE", nullable = false)
@@ -38,10 +37,9 @@ public class Cliente implements Serializable {
 	
 	@Column(name = "EMAIL_CLIENTE")
 	private String eMail;
-	
-	@Column(name = "TELEFONES_CLIENTE")	
-	@CollectionOfElements(fetch = FetchType.EAGER)
-	private Set<String> telefones;
+		
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="cliente", targetEntity=Telefone.class)
+	private Set<Telefone> telefones;
 	
 	public Cliente(){
 		telefones = new HashSet<>();
@@ -87,11 +85,11 @@ public class Cliente implements Serializable {
 		this.eMail = eMail;
 	}
 
-	public Set<String> getTelefones() {
+	public Set<Telefone> getTelefones() {
 		return telefones;
 	}
 
-	public void setTelefones(Set<String> telefones) {
+	public void setTelefones(Set<Telefone> telefones) {
 		this.telefones = telefones;
 	}
 	

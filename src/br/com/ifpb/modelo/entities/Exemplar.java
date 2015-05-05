@@ -1,12 +1,19 @@
 package br.com.ifpb.modelo.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,7 +28,11 @@ public class Exemplar  implements Serializable {
 	@Column(name = "QUANT_EXEMPLAR")
 	private int quantidade;
 	
-	public Exemplar() {	}
+	@ManyToOne
+	@JoinColumn(name = "LIVRO_EXEMPLAR", nullable = false)
+	private Livro livro;
+	
+	public Exemplar() {}
 
 	public long getId() {
 		return id;
@@ -37,6 +48,24 @@ public class Exemplar  implements Serializable {
 
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
+	}	
+
+	public Livro getLivro() {
+		return livro;
+	}
+
+	public void setLivro(Livro livro) {
+		this.livro = livro;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Exemplar\nId: ");
+		builder.append(id);
+		builder.append("\nQuantidade: ");
+		builder.append(quantidade);			
+		return builder.toString();
 	}
 	
 	

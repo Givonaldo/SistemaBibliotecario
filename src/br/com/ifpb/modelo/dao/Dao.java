@@ -1,16 +1,25 @@
 package br.com.ifpb.modelo.dao;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import br.com.ifpb.modelo.exception.EntityNullException;
 
-
-public interface Dao<T> {
+public abstract class Dao<T> {
 	
-	public void add(T obj) throws Exception;
+	protected static EntityManagerFactory factory = Persistence.createEntityManagerFactory("Teste");
 	
-	public T read(long codigo) throws Exception;
+	public static EntityManager getEM(){
+		return factory.createEntityManager();
+	}
 	
-	public void remove(T obj) throws EntityNullException;
+	public abstract void add(T obj) throws Exception;
 	
-	public void upDate(T obj, long codigo) throws EntityNullException;
+	public abstract T read(long codigo) throws Exception;
+	
+	public abstract void remove(T obj) throws EntityNullException;
+	
+	public abstract void upDate(T obj, long codigo) throws EntityNullException;
 
 }

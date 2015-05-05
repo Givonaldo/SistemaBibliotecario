@@ -1,6 +1,8 @@
 package br.com.ifpb.modelo.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -18,8 +23,8 @@ import javax.persistence.Table;
 public class Livro implements Serializable {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_LIVRO")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	@Column(name = "TITULO_LIVRO")
@@ -31,11 +36,27 @@ public class Livro implements Serializable {
 	@Column(name = "ANO_LIVRO")
 	private String ano;	
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "EDITORA_LIVRO", nullable = false)
 	private Editora editora;
 
-	public Livro() {}
+	@ManyToOne
+	@JoinColumn(name = "DISCIPLINA_LIVRO", nullable = false)
+	private Disciplina disciplina;
+	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="livro", targetEntity=Exemplar.class)
+	private Set<Exemplar> exemplares;
+
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "AUTORES_LIVRO",
+				joinColumns = @JoinColumn(name = "ID_LIVRO"),
+				inverseJoinColumns = @JoinColumn(name="ID_AUTOR"))
+	private Set<Autor> autores;
+		
+	public Livro() {
+		this.autores = new HashSet<>();
+		this.exemplares = new HashSet<>();
+	}
 
 	public long getId() {
 		return id;
@@ -77,6 +98,30 @@ public class Livro implements Serializable {
 		this.editora = editora;
 	}
 
+	public Disciplina getDisciplina() {
+		return disciplina;
+	}
+
+	public void setDisciplina(Disciplina disciplina) {
+		this.disciplina = disciplina;
+	}
+
+	public Set<Autor> getAutores() {
+		return autores;
+	}
+
+	public void setAutor(Autor autor) {
+		this.autores.add(autor);
+	}
+
+	public Set<Exemplar> getExemplares() {
+		return exemplares;
+	}
+
+	public void setExemplares(Set<Exemplar> exemplares) {
+		this.exemplares = exemplares;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -86,10 +131,18 @@ public class Livro implements Serializable {
 		builder.append(titulo);
 		builder.append("\nIsbn: ");
 		builder.append(isbn);
-		builder.append("\nAno: ");
+		builder.append("\nAno:");
 		builder.append(ano);
-		builder.append("\n\n");
+		builder.append("\nEditora: ");
+		builder.append(editora);
+		builder.append("\nDisciplina: ");
+		builder.append(disciplina);
+		builder.append("\nAutores: ");
+		builder.append(autores);
+		builder.append("\nExemplares: ");
+		builder.append(exemplares);
 		return builder.toString();
 	}
+
 	
 }

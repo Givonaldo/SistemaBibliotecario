@@ -18,8 +18,8 @@ import javax.persistence.Table;
 public class Editora implements Serializable {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_EDITORA")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	@Column(name = "NOME_EDITORA")
@@ -29,7 +29,7 @@ public class Editora implements Serializable {
 	private Set<Livro> livros;
 
 	public Editora(){
-		livros = new HashSet<>();
+		this.livros = new HashSet<>();
 	}
 
 	public long getId() {
