@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import br.com.ifpb.modelo.entidades.comuns.Pessoa;
+
 @Entity
 @Table(name = "TELEFONES")
 public class Telefone implements Serializable {
@@ -45,11 +47,11 @@ public class Telefone implements Serializable {
 		this.telefone = telefone;
 	}
 
-	public Cliente getCliente() {
+	public Pessoa getCliente() {
 		return pessoa;
 	}
 
-	public void setCliente(Cliente pessoa) {
+	public void setCliente(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
 

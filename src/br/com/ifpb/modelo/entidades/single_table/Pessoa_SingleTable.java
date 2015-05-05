@@ -1,6 +1,7 @@
 package br.com.ifpb.modelo.entidades.single_table;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -12,11 +13,13 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import br.com.ifpb.modelo.entidades.comuns.Pessoa;
+
 @Entity
 @Table (name="SINGLE_PESSOAS")
 @Inheritance (strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn ( name="DISCRIMINADOR", discriminatorType= DiscriminatorType.STRING)
-public abstract class Pessoa_SingleTable implements Serializable {
+public abstract class Pessoa_SingleTable implements Serializable, Pessoa {
 	
 	@Id
 	@Column(name= "ID_PESSOA")

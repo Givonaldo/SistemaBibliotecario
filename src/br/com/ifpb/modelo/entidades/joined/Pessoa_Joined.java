@@ -11,10 +11,12 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import br.com.ifpb.modelo.entidades.comuns.Pessoa;
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "JOINED_PESSOAS")
-public abstract class Pessoa_Joined implements Serializable {
+public abstract class Pessoa_Joined implements Serializable, Pessoa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

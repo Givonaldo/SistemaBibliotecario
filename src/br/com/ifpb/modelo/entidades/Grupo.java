@@ -18,6 +18,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.CollectionOfElements;
 
+import br.com.ifpb.modelo.entidades.comuns.Pessoa;
+
 @Entity
 @Table(name = "GRUPOS")
 public class Grupo implements Serializable {
@@ -35,7 +37,7 @@ public class Grupo implements Serializable {
 	
 	@Column(name = "ADM_GRUPO")
 	@CollectionOfElements(fetch = FetchType.EAGER)
-	private Set<Cliente> administradores;
+	private Set<Pessoa> administradores;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "AUTORES_LIVRO",joinColumns = @JoinColumn(name = "ID_LIVRO"),
@@ -71,7 +73,7 @@ public class Grupo implements Serializable {
 		this.privacidade = privacidade;
 	}
 
-	public Set<Cliente> getAdministradores() {
+	public Set<Pessoa> getAdministradores() {
 		return administradores;
 	}
 
@@ -79,11 +81,11 @@ public class Grupo implements Serializable {
 		return disciplinas;
 	}
 	
-	public void setAdministradores(Cliente administrador) {
+	public void setAdministradores(Pessoa administrador) {
 		this.administradores.add(administrador); 
 	}
 
-	public void setAdministradores(Set<Cliente> administradores) {
+	public void setAdministradores(Set<Pessoa> administradores) {
 		this.administradores = administradores;
 	}
 

@@ -1,6 +1,7 @@
 package br.com.ifpb.modelo.entidades.per_class;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,10 +12,12 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
+import br.com.ifpb.modelo.entidades.comuns.Pessoa;
+
 @Entity
 @Table(name = "PER_CLASS_PESSOA")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Pessoa_Per_Class implements Serializable {
+public abstract class Pessoa_Per_Class implements Serializable, Pessoa {
 
     @TableGenerator(name = "SEQUENCIA_PESSOA",
             table = "PER_CLASS_GERADOR_SEQUENCIAIS",
