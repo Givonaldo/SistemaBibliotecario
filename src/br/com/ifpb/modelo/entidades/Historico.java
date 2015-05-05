@@ -1,4 +1,4 @@
-package br.com.ifpb.modelo.entities;
+package br.com.ifpb.modelo.entidades;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -10,19 +10,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "EMPRESTIMOS")
-public class Emprestimo implements Serializable {
 
+@Entity
+@Table(name = "HISTORICOS")
+public class Historico implements Serializable {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID_EMPRESTIMO")
+	@Column(name = "ID_HISTORICO")
 	private long id;
 	
-	@Column(name = "DATA_EMP_EMPRESTIMO")
+	@Column(name = "DATA_EMP_HISTORICO")
 	private Calendar dataEmprestimo;
+
+	@Column(name = "DATA_DEV_HISTORICO")
+	private Calendar dataDevolucao;
 	
-	public Emprestimo() {}
+	@Column(name = "MULTA_HISTORICO")
+	private double multa;
+
+	public Historico() {}
 
 	public long getId() {
 		return id;
@@ -38,6 +45,22 @@ public class Emprestimo implements Serializable {
 
 	public void setDataEmprestimo(Calendar dataEmprestimo) {
 		this.dataEmprestimo = dataEmprestimo;
+	}
+
+	public Calendar getDataDevolucao() {
+		return dataDevolucao;
+	}
+
+	public void setDataDevolucao(Calendar dataDevolucao) {
+		this.dataDevolucao = dataDevolucao;
+	}
+
+	public double getMulta() {
+		return multa;
+	}
+
+	public void setMulta(double multa) {
+		this.multa = multa;
 	}
 	
 	

@@ -1,4 +1,4 @@
-package br.com.ifpb.modelo.entities;
+package br.com.ifpb.modelo.entidades;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -29,8 +29,13 @@ public class Disciplina implements Serializable {
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="disciplina", targetEntity=Livro.class)
 	private Set<Livro> livros;
 	
+	@ManyToMany(mappedBy = "disciplinas")
+	private Set<Grupo> grupos;
+	
+	
 	public Disciplina(){
 		this.livros = new HashSet<>();
+		this.grupos = new HashSet<>();
 	}
 
 	public long getId() {
@@ -49,6 +54,30 @@ public class Disciplina implements Serializable {
 		this.nome = nome;
 	}
 
+	public Set<Livro> getLivros() {
+		return livros;
+	}
+
+	public void setLivros(Set<Livro> livros) {
+		this.livros = livros;
+	}
+
+	public void setLivros(Livro livro){
+		this.livros.add(livro);		
+	}
+	
+	public Set<Grupo> getGrupos() {
+		return grupos;
+	}
+
+	public void setGrupos(Set<Grupo> grupos) {
+		this.grupos = grupos;
+	}
+	
+	public void SetGrupos(Grupo grupo){
+		this.grupos.add(grupo);
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -58,9 +87,8 @@ public class Disciplina implements Serializable {
 		builder.append(nome);
 		builder.append("\nLivros: ");
 		builder.append(livros);
+		builder.append("\nGrupos: ");
+		builder.append(grupos);		
 		return builder.toString();
-	}
-	
-	
-	
+	}	
 }

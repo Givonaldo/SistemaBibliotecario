@@ -1,4 +1,4 @@
-package br.com.ifpb.modelo.entities;
+package br.com.ifpb.modelo.entidades;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -52,6 +52,10 @@ public class Editora implements Serializable {
 		return livros;
 	}
 
+	public void setLivros(Set<Livro> livros) {
+		this.livros = livros;
+	}
+	
 	public void setLivros(Livro livro) {
 		this.livros.add(livro);
 	}

@@ -1,8 +1,8 @@
 package br.com.ifpb.main;
 
 import br.com.ifpb.modelo.dao.ExemplarDao;
-import br.com.ifpb.modelo.entities.Exemplar;
-import br.com.ifpb.modelo.entities.Livro;
+import br.com.ifpb.modelo.entidades.Exemplar;
+import br.com.ifpb.modelo.entidades.Livro;
 
 public class TesteSistemaBibliotecario {
 
@@ -25,15 +25,15 @@ public class TesteSistemaBibliotecario {
 //		livro.setTitulo("A cabana");
 //		livro.setAno("2001");
 //		livro.setIsbn("12345678-01");
-//		livro.setEditora(editora);
-//		livro.setAutor(autor);
-//		livro.setDisciplina(disciplina);
+//		livro.setEditoras(editora);
+//		livro.setAutores(autor);
+//		livro.setDisciplinas(disciplina);
 //		
 //		LivroDao dao  = new LivroDao();
 //		dao.add(livro);
 		
 		Exemplar exemplar = new Exemplar();
-//		exemplar.setId(1);
+		//exemplar.setId(1);
 		exemplar.setQuantidade(10);
 		exemplar.setLivro(livro);
 		

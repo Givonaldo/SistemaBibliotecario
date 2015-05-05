@@ -2,7 +2,7 @@ package br.com.ifpb.modelo.dao;
 
 import javax.persistence.EntityManager;
 
-import br.com.ifpb.modelo.entities.Disciplina;
+import br.com.ifpb.modelo.entidades.Disciplina;
 import br.com.ifpb.modelo.exception.EntityNullException;
 
 public class DisciplinaDao extends Dao<Disciplina> {

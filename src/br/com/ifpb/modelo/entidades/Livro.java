@@ -1,4 +1,4 @@
-package br.com.ifpb.modelo.entities;
+package br.com.ifpb.modelo.entidades;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -48,8 +48,7 @@ public class Livro implements Serializable {
 	private Set<Exemplar> exemplares;
 
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "AUTORES_LIVRO",
-				joinColumns = @JoinColumn(name = "ID_LIVRO"),
+	@JoinTable(name = "AUTORES_LIVRO",joinColumns = @JoinColumn(name = "ID_LIVRO"),
 				inverseJoinColumns = @JoinColumn(name="ID_AUTOR"))
 	private Set<Autor> autores;
 		
@@ -110,7 +109,11 @@ public class Livro implements Serializable {
 		return autores;
 	}
 
-	public void setAutor(Autor autor) {
+	public void setAutores(Set<Autor> autores) {
+		this.autores = autores;
+	}
+
+	public void setAutores(Autor autor) {
 		this.autores.add(autor);
 	}
 
@@ -142,7 +145,5 @@ public class Livro implements Serializable {
 		builder.append("\nExemplares: ");
 		builder.append(exemplares);
 		return builder.toString();
-	}
-
-	
+	}	
 }

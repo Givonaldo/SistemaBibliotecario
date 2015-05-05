@@ -2,7 +2,7 @@ package br.com.ifpb.modelo.dao;
 
 import javax.persistence.EntityManager;
 
-import br.com.ifpb.modelo.entities.Editora;
+import br.com.ifpb.modelo.entidades.Editora;
 import br.com.ifpb.modelo.exception.EntityNullException;
 
 public class EditoraDao extends Dao<Editora> {

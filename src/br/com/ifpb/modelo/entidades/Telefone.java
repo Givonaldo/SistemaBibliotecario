@@ -1,4 +1,4 @@
-package br.com.ifpb.modelo.entities;
+package br.com.ifpb.modelo.entidades;
 
 import java.io.Serializable;
 
@@ -24,11 +24,10 @@ public class Telefone implements Serializable {
 	private String telefone;
 
 	@ManyToOne
-	@JoinColumn(name = "CLIENTE_TELEFONE", nullable = false)
-	private Cliente cliente;
+	@JoinColumn(name = "PESSOA_TELEFONE", nullable = false)
+	private Pessoa pessoa;
 
-	public Telefone() {
-	}
+	public Telefone() {}
 
 	public long getId() {
 		return id;
@@ -47,11 +46,11 @@ public class Telefone implements Serializable {
 	}
 
 	public Cliente getCliente() {
-		return cliente;
+		return pessoa;
 	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setCliente(Cliente pessoa) {
+		this.pessoa = pessoa;
 	}
 
 	@Override

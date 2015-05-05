@@ -1,4 +1,4 @@
-package br.com.ifpb.modelo.entities;
+package br.com.ifpb.modelo.entidades;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -29,7 +29,7 @@ public class Exemplar  implements Serializable {
 	private int quantidade;
 	
 	@ManyToOne
-	@JoinColumn(name = "LIVRO_EXEMPLAR", nullable = false)
+	@JoinColumn(name = "ID_LIVRO_EXEMPLAR", nullable = false)
 	private Livro livro;
 	
 	public Exemplar() {}

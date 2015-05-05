@@ -2,7 +2,7 @@ package br.com.ifpb.modelo.dao;
 
 import javax.persistence.EntityManager;
 
-import br.com.ifpb.modelo.entities.Livro;
+import br.com.ifpb.modelo.entidades.Livro;
 import br.com.ifpb.modelo.exception.EntityNullException;
 
 public class LivroDao extends Dao<Livro>{

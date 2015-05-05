@@ -2,8 +2,8 @@ package br.com.ifpb.modelo.dao;
 
 import javax.persistence.EntityManager;
 
-import br.com.ifpb.modelo.entities.Exemplar;
-import br.com.ifpb.modelo.entities.Telefone;
+import br.com.ifpb.modelo.entidades.Exemplar;
+import br.com.ifpb.modelo.entidades.Telefone;
 import br.com.ifpb.modelo.exception.EntityNullException;
 
 public class ExemplarDao extends Dao<Exemplar> {

@@ -1,4 +1,4 @@
-package br.com.ifpb.modelo.entities;
+package br.com.ifpb.modelo.entidades;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -37,32 +37,30 @@ public class Autor implements Serializable {
 		return id;
 	}
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public String getNome() {
 		return nome;
 	}
 
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 
 	public Set<Livro> getLivros() {
 		return livros;
 	}
 
-
 	public void setLivros(Set<Livro> livros) {
 		this.livros = livros;
 	}
-
-
+	
+	public void setLivros(Livro livro) {
+		this.livros.add(livro);
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -73,6 +71,5 @@ public class Autor implements Serializable {
 		builder.append("\nLivros");
 		builder.append(livros);
 		return builder.toString();
-	}	
-	
+	}		
 }
