@@ -1,4 +1,4 @@
-package br.com.ifpb.modelo.entidades.comuns;
+package br.com.ifpb.modelo.entidades;
 
 public enum SituacaoAluno {
 

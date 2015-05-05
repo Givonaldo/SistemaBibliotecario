@@ -18,8 +18,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.CollectionOfElements;
 
-import br.com.ifpb.modelo.entidades.comuns.Pessoa;
-
 @Entity
 @Table(name = "GRUPOS")
 public class Grupo implements Serializable {

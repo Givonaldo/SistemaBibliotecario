@@ -11,7 +11,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
-import br.com.ifpb.modelo.entidades.comuns.Pessoa;
+import br.com.ifpb.modelo.entidades.Pessoa;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)

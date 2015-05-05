@@ -12,7 +12,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
-import br.com.ifpb.modelo.entidades.comuns.Pessoa;
+import br.com.ifpb.modelo.entidades.Pessoa;
 
 @Entity
 @Table(name = "PER_CLASS_PESSOA")

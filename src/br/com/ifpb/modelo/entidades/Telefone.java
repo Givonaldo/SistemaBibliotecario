@@ -11,8 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import br.com.ifpb.modelo.entidades.comuns.Pessoa;
-
 @Entity
 @Table(name = "TELEFONES")
 public class Telefone implements Serializable {

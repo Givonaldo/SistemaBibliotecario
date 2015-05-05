@@ -1,7 +1,7 @@
 package br.com.ifpb.modelo.entidades.per_class;
 
-import br.com.ifpb.modelo.entidades.comuns.Curso;
-import br.com.ifpb.modelo.entidades.comuns.SituacaoAluno;
+import br.com.ifpb.modelo.entidades.Curso;
+import br.com.ifpb.modelo.entidades.SituacaoAluno;
 
 import java.io.Serializable;
 

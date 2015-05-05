@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
-import br.com.ifpb.modelo.entidades.comuns.Curso;
-import br.com.ifpb.modelo.entidades.comuns.SituacaoAluno;
+import br.com.ifpb.modelo.entidades.Curso;
+import br.com.ifpb.modelo.entidades.SituacaoAluno;
 
 import javax.persistence.Column;
 
