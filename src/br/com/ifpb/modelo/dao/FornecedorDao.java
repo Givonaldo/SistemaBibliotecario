@@ -2,73 +2,73 @@ package br.com.ifpb.modelo.dao;
 
 import javax.persistence.EntityManager;
 
-import br.com.ifpb.modelo.entidades.Livro;
+import br.com.ifpb.modelo.entidades.Fornecedor;
 import br.com.ifpb.modelo.exception.EntityNullException;
 
-public class LivroDao extends Dao<Livro>{
-	
+public class FornecedorDao extends Dao<Fornecedor> {
+
 	private EntityManager em;
-	
-	public LivroDao() {
+
+	public FornecedorDao() {
 		em = getEM();
 	}
-	
+
 	@Override
-	public void add(Livro livro) throws Exception {
+	public void add(Fornecedor fornecedor) throws Exception {
 		try {
 			em.getTransaction().begin();
-			em.persist(livro);
+			em.persist(fornecedor);
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			throw new Exception();
 		} finally {
 			em.close();
-		}
+		}	
 	}
 
 	@Override
-	public Livro read(long codigo) {
+	public Fornecedor read(long codigo) throws Exception {
 		try {
 			em.getTransaction().begin();
-			em.find(Livro.class, codigo);
+			em.find(Fornecedor.class, codigo);
 			em.getTransaction().commit();
-			return em.find(Livro.class, codigo);
+			return em.find(Fornecedor.class, codigo);
 		} catch (Exception e) {
 
 		} finally {
 			em.close();
 		}
-		return (Livro) em;
+		return (Fornecedor) em;
 	}
-	
+
 	@Override
-	public void remove(Livro livro) throws EntityNullException {
+	public void remove(Fornecedor fornecedor) throws EntityNullException {
 		try {
 			em.getTransaction().begin();
-			Livro l = em.find(Livro.class, livro.getId());
-			em.remove(l);
+			Fornecedor f = em.find(Fornecedor.class, fornecedor.getId());
+			em.remove(f);
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			throw new EntityNullException();
 		} finally {
 			em.close();
-		}
+		}		
 	}
-	
+
 	@Override
-	public void upDate(Livro livro, long codigo) throws EntityNullException {
+	public void upDate(Fornecedor fornecedor, long codigo) throws EntityNullException {
 		try {
 			em.getTransaction().begin();
-			Livro l = em.find(Livro.class, codigo);
-			l.setTitulo(livro.getTitulo());
-			l.setAno(livro.getAno());
-			l.setIsbn(livro.getIsbn());
-			em.merge(l);
+			Fornecedor f = em.find(Fornecedor.class, codigo);
+			f.setNome(fornecedor.getNome());
+			em.merge(f);
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			throw new EntityNullException();
 		} finally {
 			em.close();
-		}
+		}		
+
 	}
+
 }

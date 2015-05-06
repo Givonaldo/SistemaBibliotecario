@@ -2,11 +2,18 @@ package br.com.ifpb.main;
 
 import br.com.ifpb.modelo.dao.ExemplarDao;
 import br.com.ifpb.modelo.entidades.Exemplar;
+import br.com.ifpb.modelo.entidades.Fornecedor;
 import br.com.ifpb.modelo.entidades.Livro;
 
 public class TesteSistemaBibliotecario {
 
 	public static void main(String[] args) throws Exception {
+		
+		
+		
+		
+		
+		
 		//Autor autor = new Autor();
 		//autor.setId(1L);
 		//autor.setNome("Machado de Assis");
@@ -19,35 +26,41 @@ public class TesteSistemaBibliotecario {
 		//disciplina.setId(1);
 		//disciplina.setNome("Literatura");
 		
+		//EditoraDao editoraDao = new EditoraDao();
+		//editoraDao.add(editora);
+		//AutorDao autorDao = new AutorDao();
+		//autorDao.add(autor);
+		//DisciplinaDao discDao = new DisciplinaDao();
+		//discDao.add(disciplina);
 
-		Livro livro = new Livro();
-		livro.setId(1);
+//		Livro livro = new Livro();
+//		livro.setId(1);
 //		livro.setTitulo("A cabana");
 //		livro.setAno("2001");
 //		livro.setIsbn("12345678-01");
-//		livro.setEditoras(editora);
+//		livro.setEditora(editora);
 //		livro.setAutores(autor);
-//		livro.setDisciplinas(disciplina);
+//		livro.setDisciplina(disciplina);
 //		
 //		LivroDao dao  = new LivroDao();
 //		dao.add(livro);
+//		
+//		Fornecedor forn = new Fornecedor();
+//		forn.setId(1);
+//		forn.setNome("Logística Globo");
+//		
+//		FornecedorDao fornDAo = new FornecedorDao();
+//		fornDAo.add(forn);
 		
-		Exemplar exemplar = new Exemplar();
-		//exemplar.setId(1);
-		exemplar.setQuantidade(10);
-		exemplar.setLivro(livro);
+//		Exemplar exemplar = new Exemplar();
+//		//exemplar.setId(1);
+//		exemplar.setQuantidade(10);
+//		exemplar.setLivro(livro);
+//		exemplar.setFornecedor(forn);
+//		
+//		ExemplarDao exemplarDao = new ExemplarDao();
+//		exemplarDao.add(exemplar);
 		
-		ExemplarDao exemplarDao = new ExemplarDao();
-		exemplarDao.add(exemplar);
-		
-
-		
-//		EditoraDao editoraDao = new EditoraDao();
-//		editoraDao.add(editora);
-//		AutorDao autorDao = new AutorDao();
-//		autorDao.add(autor);
-//		DisciplinaDao discDao = new DisciplinaDao();
-//		discDao.add(disciplina);
 		
 //		Telefone telefone = new Telefone();
 //		telefone.setTelefone("83 9654-7901");
@@ -61,6 +74,8 @@ public class TesteSistemaBibliotecario {
 //		
 //		TelefoneDao telDao = new TelefoneDao();
 //		telDao.add(telefone);
+		
+		
 		
 	}
 

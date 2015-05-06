@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,8 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.CollectionOfElements;
 
 @Entity
 @Table(name = "GRUPOS")
@@ -33,8 +30,9 @@ public class Grupo implements Serializable {
 	@Column(name = "PRIVACIDADE_GRUPO")
 	private String privacidade;	
 	
-	@Column(name = "ADM_GRUPO")
-	@CollectionOfElements(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "AUTORES_ADMINISTRADORES",joinColumns = @JoinColumn(name = "ID_PESSOA"),
+				inverseJoinColumns = @JoinColumn(name="ID_AUTOR"))
 	private Set<Pessoa> administradores;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
@@ -74,10 +72,6 @@ public class Grupo implements Serializable {
 	public Set<Pessoa> getAdministradores() {
 		return administradores;
 	}
-
-	public Set<Disciplina> getDisciplinas() {
-		return disciplinas;
-	}
 	
 	public void setAdministradores(Pessoa administrador) {
 		this.administradores.add(administrador); 
@@ -85,6 +79,10 @@ public class Grupo implements Serializable {
 
 	public void setAdministradores(Set<Pessoa> administradores) {
 		this.administradores = administradores;
+	}
+	
+	public Set<Disciplina> getDisciplinas() {
+		return disciplinas;
 	}
 
 	public void setDisciplinas(Set<Disciplina> disciplinas) {

@@ -2,22 +2,22 @@ package br.com.ifpb.modelo.dao;
 
 import javax.persistence.EntityManager;
 
-import br.com.ifpb.modelo.entidades.Telefone;
+import br.com.ifpb.modelo.entidades.Grupo;
 import br.com.ifpb.modelo.exception.EntityNullException;
 
-public class TelefoneDao extends Dao<Telefone> {
-	
+public class GrupoDao extends Dao<Grupo> {
+
 	private EntityManager em;
-	
-	public TelefoneDao() {
+
+	public GrupoDao() {
 		em = getEM();
 	}
-	
+
 	@Override
-	public void add(Telefone telefone) throws Exception {
+	public void add(Grupo grupo) throws Exception {
 		try {
 			em.getTransaction().begin();
-			em.persist(telefone);
+			em.persist(grupo);
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			throw new Exception();
@@ -27,26 +27,26 @@ public class TelefoneDao extends Dao<Telefone> {
 	}
 
 	@Override
-	public Telefone read(long codigo) throws Exception {
+	public Grupo read(long codigo) throws Exception {
 		try {
 			em.getTransaction().begin();
-			em.find(Telefone.class, codigo);
+			em.find(Grupo.class, codigo);
 			em.getTransaction().commit();
-			return em.find(Telefone.class, codigo);
+			return em.find(Grupo.class, codigo);
 		} catch (Exception e) {
-
+			
 		} finally {
 			em.close();
 		}
-		return (Telefone) em;
+		return (Grupo) em;
 	}
 
 	@Override
-	public void remove(Telefone telefone) throws EntityNullException {
+	public void remove(Grupo grupo) throws EntityNullException {
 		try {
 			em.getTransaction().begin();
-			Telefone t = em.find(Telefone.class, telefone.getId());
-			em.remove(t);
+			Grupo g = em.find(Grupo.class, grupo.getId());
+			em.remove(g);
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			throw new EntityNullException();
@@ -56,18 +56,19 @@ public class TelefoneDao extends Dao<Telefone> {
 	}
 
 	@Override
-	public void upDate(Telefone telefone, long codigo) throws EntityNullException {
+	public void upDate(Grupo grupo, long codigo) throws EntityNullException {
 		try {
 			em.getTransaction().begin();
-			Telefone t = em.find(Telefone.class, codigo);
-			t.setTelefone(telefone.getTelefone());			
-			em.merge(t);
+			Grupo g = em.find(Grupo.class, codigo);
+			g.setNome(grupo.getNome());
+			g.setPrivacidade(grupo.getPrivacidade());
+			em.merge(g);
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			throw new EntityNullException();
 		} finally {
 			em.close();
-		}			
+		}	
 	}
 
 }

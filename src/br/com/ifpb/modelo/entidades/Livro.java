@@ -11,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -53,8 +52,8 @@ public class Livro implements Serializable {
 	private Set<Autor> autores;
 		
 	public Livro() {
-		this.autores = new HashSet<>();
 		this.exemplares = new HashSet<>();
+		this.autores = new HashSet<>();
 	}
 
 	public long getId() {
