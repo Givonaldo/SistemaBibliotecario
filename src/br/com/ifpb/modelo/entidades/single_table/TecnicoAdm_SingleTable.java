@@ -9,27 +9,31 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@DiscriminatorValue ("T")
+@DiscriminatorValue("T")
 public class TecnicoAdm_SingleTable extends Pessoa_SingleTable {
-	
-	@Column(name="DATA_ADMISSAO_TECNICO_ADM")
-    @Temporal(TemporalType.DATE)
+
+	@Column(name = "DATA_ADMISSAO_TECNICO_ADM")
+	@Temporal(TemporalType.DATE)
 	private Date dataAdmissao;
-    
-	@Column(name="CARGO")
+
+	@Column(name = "CARGO")
 	private String cargo;
-	
-	public TecnicoAdm_SingleTable() { }
-	
+
+	public TecnicoAdm_SingleTable() {
+	}
+
 	public Date getDataAdmicao() {
 		return dataAdmissao;
 	}
+
 	public void setDataAdmissao(Date dataAdmissao) {
 		this.dataAdmissao = dataAdmissao;
 	}
+
 	public String getCargo() {
 		return cargo;
 	}
+
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
 	}
@@ -44,6 +48,5 @@ public class TecnicoAdm_SingleTable extends Pessoa_SingleTable {
 		builder.append(cargo);
 		return builder.toString();
 	}
-	
-}
 
+}

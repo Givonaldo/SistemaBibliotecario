@@ -15,19 +15,19 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "FORNECEDORES")
-public class Fornecedor implements Serializable  {
-	
+public class Fornecedor implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_FORNECEDOR")
-	private long id;	
+	private long id;
 
 	@Column(name = "NOME_FORNECEDOR")
 	private String nome;
-	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy="fornecedor", targetEntity=Exemplar.class)
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "fornecedor", targetEntity = Exemplar.class)
 	private Set<Exemplar> exemplares;
-	
+
 	public Fornecedor() {
 		this.exemplares = new HashSet<>();
 	}
@@ -47,6 +47,7 @@ public class Fornecedor implements Serializable  {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public Set<Exemplar> getExemplares() {
 		return exemplares;
 	}
@@ -66,5 +67,5 @@ public class Fornecedor implements Serializable  {
 		builder.append(exemplares);
 		return builder.toString();
 	}
-	
+
 }

@@ -3,14 +3,11 @@ package br.com.ifpb.main;
 import java.util.Calendar;
 import java.util.Date;
 
-import br.com.ifpb.modelo.dao.SingleDao;
+import br.com.ifpb.modelo.dao.PerClassDao;
 import br.com.ifpb.modelo.entidades.Curso;
 import br.com.ifpb.modelo.entidades.Endereco;
 import br.com.ifpb.modelo.entidades.Fone;
-import br.com.ifpb.modelo.entidades.SituacaoAluno;
-import br.com.ifpb.modelo.entidades.single_table.Aluno_SingleTable;
-import br.com.ifpb.modelo.entidades.single_table.Professor_SingleTable;
-import br.com.ifpb.modelo.entidades.single_table.TecnicoAdm_SingleTable;
+import br.com.ifpb.modelo.entidades.per_class.TecnicoAdm_Per_Class;
 
 public class TesteHeranca {
 
@@ -33,72 +30,72 @@ public class TesteHeranca {
         endereco.setCep("58550-000");
         endereco.setCidade("Monteiro");
         endereco.setUf("PB");
-        
-        //Aluno_Joined aluno = new Aluno_Joined();       
-        Aluno_SingleTable aluno = new Aluno_SingleTable();
-        //Aluno_Per_Class aluno = new Aluno_Per_Class();
-        
-        //aluno.setId(1);
-        aluno.setNome("Alexandre Azevedo Rodrigues");
-        aluno.setMatricula(20150001);
-        aluno.setCurso(curso);
-        aluno.setSituacao(SituacaoAluno.MATRICULADO);
-        aluno.setEndereco(endereco);
-        aluno.setFone(fone);
-
-        //Professor_Joined professor = new Professor_Joined();
-        Professor_SingleTable professor = new Professor_SingleTable();
-        //Professor_Per_Class  professor = new Professor_Per_Class();
-        
-        //professor.setId(2);
-        professor.setNome("Ivo Morais Gomes");
-        professor.setMatricula(20151001);
-        professor.setAreaDeAtuacao("Cordenação");
-        professor.setDataAdmissao(data);
-        professor.setEndereco(endereco);
-        professor.setFone(fone);
-
-        //TecnicoAdm_Joined tecAdm = new TecnicoAdm_Joined();
-        TecnicoAdm_SingleTable tecAdm = new TecnicoAdm_SingleTable();
-        //TecnicoAdm_Per_Class tecAdm = new TecnicoAdm_Per_Class();
-        
-        //tecAdm.setId(3);
-        tecAdm.setNome("Bruno Soares Jobs");
-        tecAdm.setMatricula(20159001);
-        tecAdm.setCargo("Secretário");
-        tecAdm.setDataAdmissao(data);
-        tecAdm.setEndereco(endereco);
-        tecAdm.setFone(fone);
-
-        //JoinedDao dao1 = new JoinedDao();
-    	SingleDao dao1 = new SingleDao(); 
-        //PerClassDao dao1 = new PerClassDao();  
-        //dao1.add(aluno);
-        //System.out.println(dao1.read(aluno.getId()));
-    	
-        //JoinedDao dao2 = new JoinedDao(); 
-        SingleDao dao2 = new SingleDao();
-        //PerClassDao dao2 = new PerClassDao();  
-        dao2.add(professor);
-        //System.out.println(dao2.read(professor.getId()));
-       
-    	//JoinedDao dao3 = new JoinedDao();
-    	SingleDao dao3 = new SingleDao(); 
-        //PerClassDao dao3 = new PerClassDao();          
-        //dao3.add(tecAdm);
-        //System.out.println(dao3.read(tecAdm.getId()));
+//        
+//        //Aluno_Joined aluno = new Aluno_Joined();       
+//        Aluno_SingleTable aluno = new Aluno_SingleTable();
+//        //Aluno_Per_Class aluno = new Aluno_Per_Class();
+//        
+//        //aluno.setId(1);
+//        aluno.setNome("Alexandre Azevedo Rodrigues");
+//        aluno.setMatricula(20150001);
+//        aluno.setCurso(curso);
+//        aluno.setSituacao(SituacaoAluno.MATRICULADO);
+//        aluno.setEndereco(endereco);
+//        aluno.setFone(fone);
+//
+//        //Professor_Joined professor = new Professor_Joined();
+//        Professor_SingleTable professor = new Professor_SingleTable();
+//        //Professor_Per_Class  professor = new Professor_Per_Class();
+//        
+//        //professor.setId(2);
+//        professor.setNome("Ivo Morais Gomes");
+//        professor.setMatricula(20151001);
+//        professor.setAreaDeAtuacao("Cordenação");
+//        professor.setDataAdmissao(data);
+//        professor.setEndereco(endereco);
+//        professor.setFone(fone);
+//
+//        //TecnicoAdm_Joined tecAdm = new TecnicoAdm_Joined();
+//        TecnicoAdm_SingleTable tecAdm = new TecnicoAdm_SingleTable();
+//        TecnicoAdm_Per_Class tecAdm = new TecnicoAdm_Per_Class();
+//        
+//        tecAdm.setId(100);
+//        tecAdm.setNome("Bruno Soares Jobs");
+//        tecAdm.setMatricula(20159001);
+//        tecAdm.setCargo("Secretário");
+//        tecAdm.setDataAdmissao(data);
+//        tecAdm.setEndereco(endereco);
+//        tecAdm.setFone(fone);
+//
+//        //JoinedDao dao1 = new JoinedDao();
+//    	 SingleDao dao1 = new SingleDao(); 
+//        //PerClassDao dao1 = new PerClassDao();  
+//        dao1.add(aluno);
+//        //System.out.println(dao1.read(aluno.getId()));
+//    	
+//        //JoinedDao dao2 = new JoinedDao(); 
+//        SingleDao dao2 = new SingleDao();
+//        //PerClassDao dao2 = new PerClassDao();  
+//        dao2.add(professor);
+//        //System.out.println(dao2.read(professor.getId()));
+//       
+//    	JoinedDao dao3 = new JoinedDao();
+//    	SingleDao dao3 = new SingleDao(); 
+        PerClassDao dao3 = new PerClassDao();          
+//        dao3.add(tecAdm);
+//        //System.out.println(dao3.read(tecAdm.getId()));
     	
     	
     	    	
         //TecnicoAdm_Per_Class pessoa = new TecnicoAdm_Per_Class();
-        //pessoa.setId(3);
+        //pessoa.setId(100);
 //        pessoa.setNome("Fulanos de Talls");
 //        pessoa.setMatricula(20150005); 
         
         //PerClassDao dao = new PerClassDao();
-        //dao.upDate(pessoa);
+        dao3.remove(100);
         
-        //System.out.println(dao.read(pessoa.getId()));
+        //System.out.println(dao3.read(tecAdm.getId()));
 
     }
 }

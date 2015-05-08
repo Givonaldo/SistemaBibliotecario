@@ -19,15 +19,15 @@ public class GrupoDao extends Dao<Grupo> {
 			em.persist(grupo);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}			
+		}
 	}
 
 	@Override
@@ -38,15 +38,15 @@ public class GrupoDao extends Dao<Grupo> {
 			em.getTransaction().commit();
 			return g;
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}	
+		}
 	}
 
 	@Override
@@ -57,15 +57,15 @@ public class GrupoDao extends Dao<Grupo> {
 			em.remove(g);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}			
+		}
 	}
 
 	@Override
@@ -78,15 +78,15 @@ public class GrupoDao extends Dao<Grupo> {
 			em.merge(g);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}		
+		}
 	}
 
 }

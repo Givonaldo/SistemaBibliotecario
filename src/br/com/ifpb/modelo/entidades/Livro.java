@@ -20,21 +20,21 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "LIVROS")
 public class Livro implements Serializable {
-	
+
 	@Id
 	@Column(name = "ID_LIVRO")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	@Column(name = "TITULO_LIVRO")
 	private String titulo;
-	
+
 	@Column(name = "ISBN_LIVRO")
 	private String isbn;
-	
+
 	@Column(name = "ANO_LIVRO")
-	private String ano;	
-	
+	private String ano;
+
 	@ManyToOne
 	@JoinColumn(name = "EDITORA_LIVRO", nullable = false)
 	private Editora editora;
@@ -42,15 +42,16 @@ public class Livro implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "DISCIPLINA_LIVRO", nullable = false)
 	private Disciplina disciplina;
-	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy="livro", targetEntity=Exemplar.class)
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "livro", targetEntity = Exemplar.class)
 	private Set<Exemplar> exemplares;
 
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "AUTORES_LIVRO",joinColumns = @JoinColumn(name = "ID_LIVRO"),
-				inverseJoinColumns = @JoinColumn(name="ID_AUTOR"))
+	@JoinTable(name = "AUTORES_LIVRO", 
+			joinColumns = @JoinColumn(name = "ID_LIVRO"), 
+			inverseJoinColumns = @JoinColumn(name = "ID_AUTOR"))
 	private Set<Autor> autores;
-		
+
 	public Livro() {
 		this.exemplares = new HashSet<>();
 		this.autores = new HashSet<>();
@@ -144,5 +145,5 @@ public class Livro implements Serializable {
 		builder.append("\nExemplares: ");
 		builder.append(exemplares);
 		return builder.toString();
-	}	
+	}
 }

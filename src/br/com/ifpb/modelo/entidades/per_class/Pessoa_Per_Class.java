@@ -20,51 +20,50 @@ import br.com.ifpb.modelo.entidades.Fone;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Pessoa_Per_Class implements Serializable {
 
-    @TableGenerator(name = "SEQUENCIA_PESSOA",
-            table = "PER_CLASS_GERADOR_SEQUENCIAIS",
-            pkColumnName = "PRIMARY_KEY",
-            valueColumnName = "VALOR_SEQUENCIAL_COLUNA_PK")
+	@TableGenerator(name = "SEQUENCIA_PESSOA", 
+			table = "PER_CLASS_GERADOR_SEQUENCIAIS", 
+			pkColumnName = "PRIMARY_KEY", 
+			valueColumnName = "VALOR_SEQUENCIAL_COLUNA_PK")
+	@Id
+	@Column(name = "ID_PESSOA")
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "SEQUENCIA_PESSOA")
+	private long id;
 
-    @Id
-    @Column(name = "ID_PESSOA")
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "SEQUENCIA_PESSOA")
-    private long id;
-    
-    @Column(name = "NOME_PESSOA")
-    private String nome;
-    
-    @Column(name = "MATRICULA_PESSOA")
-    private long matricula;
-    
-    @Column(name = "ENDERECO_PESSOA")
-    private Endereco endereco;
-    
-    @Column(name = "TELEFONES_PESSOA")
-    private Fone fone;
+	@Column(name = "NOME_PESSOA")
+	private String nome;
 
-    public long getId() {
-        return id;
-    }
+	@Column(name = "MATRICULA_PESSOA")
+	private long matricula;
 
-    public void setId(long id) {
-        this.id = id;
-    }
+	@Column(name = "ENDERECO_PESSOA")
+	private Endereco endereco;
 
-    public String getNome() {
-        return nome;
-    }
+	@Column(name = "TELEFONES_PESSOA")
+	private Fone fone;
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public long getId() {
+		return id;
+	}
 
-    public long getMatricula() {
-        return matricula;
-    }
+	public void setId(long id) {
+		this.id = id;
+	}
 
-    public void setMatricula(long matricula) {
-        this.matricula = matricula;
-    }
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public long getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(long matricula) {
+		this.matricula = matricula;
+	}
 
 	public Endereco getEndereco() {
 		return endereco;

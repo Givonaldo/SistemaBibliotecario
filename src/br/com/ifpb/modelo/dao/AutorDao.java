@@ -5,13 +5,13 @@ import javax.persistence.EntityManager;
 import br.com.ifpb.modelo.entidades.Autor;
 
 public class AutorDao extends Dao<Autor> {
-	
+
 	private EntityManager em;
-	
+
 	public AutorDao() {
 		this.em = Dao.getEntityManager();
 	}
-	
+
 	@Override
 	public void add(Autor autor) throws Exception {
 		try {
@@ -19,15 +19,15 @@ public class AutorDao extends Dao<Autor> {
 			em.persist(autor);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}			
+		}
 	}
 
 	@Override
@@ -38,15 +38,15 @@ public class AutorDao extends Dao<Autor> {
 			em.getTransaction().commit();
 			return a;
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}	
+		}
 	}
 
 	@Override
@@ -57,15 +57,15 @@ public class AutorDao extends Dao<Autor> {
 			em.remove(e);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}			
+		}
 	}
 
 	@Override
@@ -77,15 +77,15 @@ public class AutorDao extends Dao<Autor> {
 			em.merge(a);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}			
+		}
 	}
 
 }

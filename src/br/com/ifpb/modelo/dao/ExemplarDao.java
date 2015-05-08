@@ -7,11 +7,11 @@ import br.com.ifpb.modelo.entidades.Exemplar;
 public class ExemplarDao extends Dao<Exemplar> {
 
 	private EntityManager em;
-	
+
 	public ExemplarDao() {
 		em = Dao.getEntityManager();
 	}
-	
+
 	@Override
 	public void add(Exemplar exemplar) throws Exception {
 		try {
@@ -19,15 +19,15 @@ public class ExemplarDao extends Dao<Exemplar> {
 			em.persist(exemplar);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}			
+		}
 	}
 
 	@Override
@@ -38,15 +38,15 @@ public class ExemplarDao extends Dao<Exemplar> {
 			em.getTransaction().commit();
 			return e;
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}	
+		}
 	}
 
 	@Override
@@ -57,15 +57,15 @@ public class ExemplarDao extends Dao<Exemplar> {
 			em.remove(e);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}			
+		}
 	}
 
 	@Override
@@ -73,19 +73,19 @@ public class ExemplarDao extends Dao<Exemplar> {
 		try {
 			em.getTransaction().begin();
 			Exemplar e = em.find(Exemplar.class, exemplar.getId());
-			e.setQuantidade(exemplar.getQuantidade());		
+			e.setQuantidade(exemplar.getQuantidade());
 			em.merge(e);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}		
+		}
 	}
 
 }

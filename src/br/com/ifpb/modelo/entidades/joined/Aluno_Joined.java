@@ -14,32 +14,32 @@ import br.com.ifpb.modelo.entidades.SituacaoAluno;
 @Table(name = "JOINED_ALUNOS")
 @PrimaryKeyJoinColumn(name = "ID_PESSOA")
 public class Aluno_Joined extends Pessoa_Joined {
-	
+
 	@Column(name = "CURSO_ALUNO")
-    private Curso curso;
-    
-    @Enumerated(EnumType.STRING)
-    @Column(name = "SITUACAO")
-    private SituacaoAluno situacao;
+	private Curso curso;
 
-    public Aluno_Joined() {
-    }
+	@Enumerated(EnumType.STRING)
+	@Column(name = "SITUACAO")
+	private SituacaoAluno situacao;
 
-    public Curso getCurso() {
-        return curso;
-    }
+	public Aluno_Joined() {
+	}
 
-    public void setCurso(Curso curso) {
-        this.curso = curso;
-    }
+	public Curso getCurso() {
+		return curso;
+	}
 
-    public SituacaoAluno getSituacao() {
-        return situacao;
-    }
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
 
-    public void setSituacao(SituacaoAluno situacao) {
-        this.situacao = situacao;
-    }
+	public SituacaoAluno getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(SituacaoAluno situacao) {
+		this.situacao = situacao;
+	}
 
 	@Override
 	public String toString() {
@@ -51,7 +51,5 @@ public class Aluno_Joined extends Pessoa_Joined {
 		builder.append(situacao);
 		return builder.toString();
 	}
-    
-    
-}
 
+}

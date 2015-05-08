@@ -19,15 +19,15 @@ public class FornecedorDao extends Dao<Fornecedor> {
 			em.persist(fornecedor);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}		
+		}
 	}
 
 	@Override
@@ -38,15 +38,15 @@ public class FornecedorDao extends Dao<Fornecedor> {
 			em.getTransaction().commit();
 			return f;
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}	
+		}
 	}
 
 	@Override
@@ -57,15 +57,15 @@ public class FornecedorDao extends Dao<Fornecedor> {
 			em.remove(f);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}		
+		}
 	}
 
 	@Override
@@ -77,13 +77,13 @@ public class FornecedorDao extends Dao<Fornecedor> {
 			em.merge(f);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
 		}
 	}

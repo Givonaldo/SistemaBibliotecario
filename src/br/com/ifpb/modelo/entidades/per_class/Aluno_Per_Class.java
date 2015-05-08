@@ -13,30 +13,31 @@ import br.com.ifpb.modelo.entidades.SituacaoAluno;
 @Table(name = "PER_CLASS_ALUNO")
 public class Aluno_Per_Class extends Pessoa_Per_Class {
 
-    @Column(name = "CURSO_ALUNO")
-    private Curso curso;
-          
-    @Column(name="SITUACAO_ALUNO")
-    @Enumerated(EnumType.STRING)
-    private SituacaoAluno situacao;
-        
-    public Aluno_Per_Class() {  }
+	@Column(name = "CURSO_ALUNO")
+	private Curso curso;
 
-    public Curso getCurso() {
-        return curso;
-    }
+	@Column(name = "SITUACAO_ALUNO")
+	@Enumerated(EnumType.STRING)
+	private SituacaoAluno situacao;
 
-    public void setCurso(Curso curso) {
-        this.curso = curso;
-    }
+	public Aluno_Per_Class() {
+	}
 
-    public SituacaoAluno getSituacao() {
-        return situacao;
-    }
+	public Curso getCurso() {
+		return curso;
+	}
 
-    public void setSituacao(SituacaoAluno situacao) {
-        this.situacao = situacao;
-    }
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
+
+	public SituacaoAluno getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(SituacaoAluno situacao) {
+		this.situacao = situacao;
+	}
 
 	@Override
 	public String toString() {

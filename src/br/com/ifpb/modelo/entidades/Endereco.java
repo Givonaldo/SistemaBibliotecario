@@ -7,26 +7,27 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class Endereco implements Serializable {
-	
+
 	@Column(name = "RUA_ENDERECO")
 	private String rua;
-	
+
 	@Column(name = "NUMERO_ENDERECO")
 	private String numero;
-	
+
 	@Column(name = "BAIRRO_ENDERECO")
 	private String bairro;
-	
+
 	@Column(name = "CEP_ENDERECO")
 	private String cep;
-	
+
 	@Column(name = "CIDADE_ENDERECO")
 	private String cidade;
-	
+
 	@Column(name = "ESTADO_ENDERECO")
 	private String uf;
-	
-	public Endereco() {	}
+
+	public Endereco() {
+	}
 
 	public String getRua() {
 		return rua;

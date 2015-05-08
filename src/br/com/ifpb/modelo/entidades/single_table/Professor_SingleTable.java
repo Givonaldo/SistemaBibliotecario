@@ -8,19 +8,19 @@ import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 @Entity
-@DiscriminatorValue ("P")
+@DiscriminatorValue("P")
 public class Professor_SingleTable extends Pessoa_SingleTable {
 
-	@Column(name="DATA_ADMISSAO_PROFESSOR")
-    @Temporal(TemporalType.DATE)	
+	@Column(name = "DATA_ADMISSAO_PROFESSOR")
+	@Temporal(TemporalType.DATE)
 	private Date dataAdmissao;
-	
-    @Column(name="AREA_ATUACAO_PROFESSOR")
+
+	@Column(name = "AREA_ATUACAO_PROFESSOR")
 	private String areaDeAtuacao;
-	
-	public Professor_SingleTable() { }
+
+	public Professor_SingleTable() {
+	}
 
 	public Date getDataAdmissao() {
 		return dataAdmissao;
@@ -48,5 +48,5 @@ public class Professor_SingleTable extends Pessoa_SingleTable {
 		builder.append(areaDeAtuacao);
 		return builder.toString();
 	}
-	
+
 }

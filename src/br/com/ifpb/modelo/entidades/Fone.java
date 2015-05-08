@@ -7,14 +7,15 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class Fone implements Serializable {
-	
+
 	@Column(name = "TELEFONE_FIXO")
 	private String telefone;
-	
+
 	@Column(name = "TELEFONE_MOVEL")
 	private String celular;
-		
-	public Fone() {	}
+
+	public Fone() {
+	}
 
 	public String getTelefone() {
 		return telefone;
@@ -40,5 +41,5 @@ public class Fone implements Serializable {
 		builder.append("\n\tTelefone móvel: ");
 		builder.append(celular);
 		return builder.toString();
-	}	
+	}
 }

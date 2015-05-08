@@ -14,31 +14,31 @@ import javax.persistence.TemporalType;
 @PrimaryKeyJoinColumn(name = "ID_PESSOA")
 public class TecnicoAdm_Joined extends Pessoa_Joined {
 
-    @Column(name = "DATA_TECNICO_ADM")
-    @Temporal(TemporalType.DATE)
-    private Date dataAdmissao;
-    
-    @Column(name = "CARGO_TECNICO_ADM")
-    private String cargo;
+	@Column(name = "DATA_TECNICO_ADM")
+	@Temporal(TemporalType.DATE)
+	private Date dataAdmissao;
 
-    public TecnicoAdm_Joined() {
-    }
+	@Column(name = "CARGO_TECNICO_ADM")
+	private String cargo;
 
-    public Date getDataAdmissao() {
-        return dataAdmissao;
-    }
+	public TecnicoAdm_Joined() {
+	}
 
-    public void setDataAdmissao(Date dataAdmissao) {
-        this.dataAdmissao = dataAdmissao;
-    }
+	public Date getDataAdmissao() {
+		return dataAdmissao;
+	}
 
-    public String getCargo() {
-        return cargo;
-    }
+	public void setDataAdmissao(Date dataAdmissao) {
+		this.dataAdmissao = dataAdmissao;
+	}
 
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
+	public String getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
 
 	@Override
 	public String toString() {

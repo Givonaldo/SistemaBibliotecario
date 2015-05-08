@@ -4,14 +4,14 @@ import javax.persistence.EntityManager;
 
 import br.com.ifpb.modelo.entidades.Livro;
 
-public class LivroDao extends Dao<Livro>{
-	
+public class LivroDao extends Dao<Livro> {
+
 	private EntityManager em;
-	
+
 	public LivroDao() {
 		em = Dao.getEntityManager();
 	}
-	
+
 	@Override
 	public void add(Livro livro) throws Exception {
 		try {
@@ -19,15 +19,15 @@ public class LivroDao extends Dao<Livro>{
 			em.persist(livro);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}	
+		}
 	}
 
 	@Override
@@ -38,17 +38,17 @@ public class LivroDao extends Dao<Livro>{
 			em.getTransaction().commit();
 			return l;
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}	
+		}
 	}
-	
+
 	@Override
 	public void remove(long codigo) throws Exception {
 		try {
@@ -57,17 +57,17 @@ public class LivroDao extends Dao<Livro>{
 			em.remove(l);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}	
+		}
 	}
-	
+
 	@Override
 	public void upDate(Livro livro) throws Exception {
 		try {
@@ -79,14 +79,14 @@ public class LivroDao extends Dao<Livro>{
 			em.merge(l);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}	
+		}
 	}
 }

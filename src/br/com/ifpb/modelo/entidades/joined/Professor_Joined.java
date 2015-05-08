@@ -14,31 +14,31 @@ import javax.persistence.TemporalType;
 @PrimaryKeyJoinColumn(name = "ID_PESSOA")
 public class Professor_Joined extends Pessoa_Joined {
 
-    @Column(name = "DATA_PROFESSOR")
-    @Temporal(TemporalType.DATE)
-    private Date dataAdmissao;
-    
-    @Column(name = "AREA_ATUACAO_PROFESSOR")
-    private String areaDeAtuacao;
+	@Column(name = "DATA_PROFESSOR")
+	@Temporal(TemporalType.DATE)
+	private Date dataAdmissao;
 
-    public Professor_Joined() {
-    }
+	@Column(name = "AREA_ATUACAO_PROFESSOR")
+	private String areaDeAtuacao;
 
-    public Date getDataAdmissao() {
-        return dataAdmissao;
-    }
+	public Professor_Joined() {
+	}
 
-    public void setDataAdmissao(Date dataAdmissao) {
-        this.dataAdmissao = dataAdmissao;
-    }
+	public Date getDataAdmissao() {
+		return dataAdmissao;
+	}
 
-    public String getAreaDeAtuacao() {
-        return areaDeAtuacao;
-    }
+	public void setDataAdmissao(Date dataAdmissao) {
+		this.dataAdmissao = dataAdmissao;
+	}
 
-    public void setAreaDeAtuacao(String areaDeAtuacao) {
-        this.areaDeAtuacao = areaDeAtuacao;
-    }
+	public String getAreaDeAtuacao() {
+		return areaDeAtuacao;
+	}
+
+	public void setAreaDeAtuacao(String areaDeAtuacao) {
+		this.areaDeAtuacao = areaDeAtuacao;
+	}
 
 	@Override
 	public String toString() {

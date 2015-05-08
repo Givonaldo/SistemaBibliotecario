@@ -7,11 +7,11 @@ import br.com.ifpb.modelo.entidades.Disciplina;
 public class DisciplinaDao extends Dao<Disciplina> {
 
 	private EntityManager em;
-	
+
 	public DisciplinaDao() {
 		this.em = Dao.getEntityManager();
 	}
-	
+
 	@Override
 	public void add(Disciplina disciplina) throws Exception {
 		try {
@@ -19,15 +19,15 @@ public class DisciplinaDao extends Dao<Disciplina> {
 			em.persist(disciplina);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}					
+		}
 	}
 
 	@Override
@@ -38,15 +38,15 @@ public class DisciplinaDao extends Dao<Disciplina> {
 			em.getTransaction().commit();
 			return d;
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}	
+		}
 	}
 
 	@Override
@@ -57,15 +57,15 @@ public class DisciplinaDao extends Dao<Disciplina> {
 			em.remove(d);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}				
+		}
 	}
 
 	@Override
@@ -77,15 +77,15 @@ public class DisciplinaDao extends Dao<Disciplina> {
 			em.merge(d);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}					
+		}
 	}
 
 }

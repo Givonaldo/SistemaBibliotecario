@@ -10,18 +10,19 @@ import br.com.ifpb.modelo.entidades.Curso;
 import br.com.ifpb.modelo.entidades.SituacaoAluno;
 
 @Entity
-@DiscriminatorValue ("A")
+@DiscriminatorValue("A")
 public class Aluno_SingleTable extends Pessoa_SingleTable {
-	
-    @Column(name="CURSO_ALUNO")
-	private Curso curso;	
-	
-    @Column(name="SITUACAO_ALUNO")
-    @Enumerated(EnumType.STRING)
+
+	@Column(name = "CURSO_ALUNO")
+	private Curso curso;
+
+	@Column(name = "SITUACAO_ALUNO")
+	@Enumerated(EnumType.STRING)
 	private SituacaoAluno situacao;
 
-	public Aluno_SingleTable() { }
-        
+	public Aluno_SingleTable() {
+	}
+
 	public Curso getCurso() {
 		return curso;
 	}
@@ -48,5 +49,5 @@ public class Aluno_SingleTable extends Pessoa_SingleTable {
 		builder.append(situacao);
 		return builder.toString();
 	}
-	
+
 }

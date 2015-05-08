@@ -73,7 +73,8 @@ public class SingleDao extends Dao<Pessoa_SingleTable> {
 	public void upDate(Pessoa_SingleTable pessoa) throws Exception {
 		try {
 			em.getTransaction().begin();
-			Pessoa_SingleTable ps = em.find(Pessoa_SingleTable.class,pessoa.getId());
+			Pessoa_SingleTable ps = em.find(Pessoa_SingleTable.class,
+					pessoa.getId());
 			ps.setNome(pessoa.getNome());
 			ps.setMatricula(pessoa.getMatricula());
 			ps.setEndereco(pessoa.getEndereco());

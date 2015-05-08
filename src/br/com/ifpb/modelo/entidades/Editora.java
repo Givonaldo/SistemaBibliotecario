@@ -16,19 +16,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "EDITORAS")
 public class Editora implements Serializable {
-	
+
 	@Id
 	@Column(name = "ID_EDITORA")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	@Column(name = "NOME_EDITORA")
 	private String nome;
-	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy="editora", targetEntity=Livro.class)
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "editora", targetEntity = Livro.class)
 	private Set<Livro> livros;
 
-	public Editora(){
+	public Editora() {
 		this.livros = new HashSet<>();
 	}
 
@@ -55,7 +55,7 @@ public class Editora implements Serializable {
 	public void setLivros(Set<Livro> livros) {
 		this.livros = livros;
 	}
-	
+
 	public void setLivros(Livro livro) {
 		this.livros.add(livro);
 	}
@@ -71,5 +71,5 @@ public class Editora implements Serializable {
 		builder.append(livros);
 		return builder.toString();
 	}
-	
+
 }

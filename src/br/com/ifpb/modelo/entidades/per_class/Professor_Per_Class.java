@@ -12,14 +12,15 @@ import javax.persistence.TemporalType;
 @Table(name = "PER_CLASS_PROFESSOR")
 public class Professor_Per_Class extends Pessoa_Per_Class {
 
-	@Column(name="DATA_ADMISSAO_PROFESSOR")
-    @Temporal(TemporalType.DATE)
+	@Column(name = "DATA_ADMISSAO_PROFESSOR")
+	@Temporal(TemporalType.DATE)
 	private Date dataAdmissao;
-	
-    @Column(name="AREA_ATUACAO_PROFESSOR")
+
+	@Column(name = "AREA_ATUACAO_PROFESSOR")
 	private String areaDeAtuacao;
-	
-	public Professor_Per_Class() { }
+
+	public Professor_Per_Class() {
+	}
 
 	public Date getDataAdmissao() {
 		return dataAdmissao;
@@ -47,7 +48,5 @@ public class Professor_Per_Class extends Pessoa_Per_Class {
 		builder.append(areaDeAtuacao);
 		return builder.toString();
 	}
-	
-	
-	
+
 }

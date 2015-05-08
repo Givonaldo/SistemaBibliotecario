@@ -19,48 +19,48 @@ import br.com.ifpb.modelo.entidades.Fone;
 @Table(name = "JOINED_PESSOAS")
 public abstract class Pessoa_Joined implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_PESSOA")
-    private long id;
-    
-    @Column(name = "NOME_PESSOA")
-    private String nome;
-    
-    @Column(name = "MATRICULA_PESSOA")
-    private long matricula;
-    
-    @Column(name = "ENDERECO_PESSOA")
-    private Endereco endereco;
-    
-    @Column(name = "TELEFONES_PESSOA")
-    private Fone fone;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_PESSOA")
+	private long id;
 
-    public long getId() {
-        return id;
-    }
+	@Column(name = "NOME_PESSOA")
+	private String nome;
 
-    public void setId(long id) {
-        this.id = id;
-    }
+	@Column(name = "MATRICULA_PESSOA")
+	private long matricula;
 
-    public String getNome() {
-        return nome;
-    }
+	@Column(name = "ENDERECO_PESSOA")
+	private Endereco endereco;
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	@Column(name = "TELEFONES_PESSOA")
+	private Fone fone;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
 	public long getMatricula() {
-        return matricula;
-    }
+		return matricula;
+	}
 
-    public void setMatricula(long matricula) {
-        this.matricula = matricula;
-    }    
-    
-    public Endereco getEndereco() {
+	public void setMatricula(long matricula) {
+		this.matricula = matricula;
+	}
+
+	public Endereco getEndereco() {
 		return endereco;
 	}
 
@@ -77,18 +77,18 @@ public abstract class Pessoa_Joined implements Serializable {
 	}
 
 	@Override
-    public String toString() {
-    	StringBuilder builder = new StringBuilder();
-    	builder.append("PESSOA JOINED\n\tId: ");
-    	builder.append(id);
-    	builder.append("\n\tNome: ");
-    	builder.append(nome);
-    	builder.append("\n\tMatricula: ");
-    	builder.append(matricula);
-    	builder.append("\nEndereco: ");
-    	builder.append(endereco);
-    	builder.append("\nTelefones: ");
-    	builder.append(fone);
-    	return builder.toString();
-    }
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("PESSOA JOINED\n\tId: ");
+		builder.append(id);
+		builder.append("\n\tNome: ");
+		builder.append(nome);
+		builder.append("\n\tMatricula: ");
+		builder.append(matricula);
+		builder.append("\nEndereco: ");
+		builder.append(endereco);
+		builder.append("\nTelefones: ");
+		builder.append(fone);
+		return builder.toString();
+	}
 }

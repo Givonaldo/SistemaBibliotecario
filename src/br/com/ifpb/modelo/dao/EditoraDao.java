@@ -5,13 +5,13 @@ import javax.persistence.EntityManager;
 import br.com.ifpb.modelo.entidades.Editora;
 
 public class EditoraDao extends Dao<Editora> {
-	
+
 	private EntityManager em;
-	
+
 	public EditoraDao() {
 		this.em = Dao.getEntityManager();
 	}
-	
+
 	@Override
 	public void add(Editora editora) throws Exception {
 		try {
@@ -19,15 +19,15 @@ public class EditoraDao extends Dao<Editora> {
 			em.persist(editora);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}	
+		}
 	}
 
 	@Override
@@ -38,15 +38,15 @@ public class EditoraDao extends Dao<Editora> {
 			em.getTransaction().commit();
 			return e;
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}	
+		}
 	}
 
 	@Override
@@ -57,15 +57,15 @@ public class EditoraDao extends Dao<Editora> {
 			em.remove(e);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}	
+		}
 	}
 
 	@Override
@@ -77,15 +77,15 @@ public class EditoraDao extends Dao<Editora> {
 			em.merge(e);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}	
+		}
 	}
 
 }

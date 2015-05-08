@@ -13,25 +13,26 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "EXEMPLARES")
-public class Exemplar  implements Serializable {
+public class Exemplar implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_EXEMPLAR")
 	private long id;
-	
+
 	@Column(name = "QUANT_EXEMPLAR")
 	private int quantidade;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "ID_LIVRO_EXEMPLAR", nullable = false)
 	private Livro livro;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "ID_FORNECEDOR_EXEMPLAR", nullable = false)
 	private Fornecedor fornecedor;
-	
-	public Exemplar() {}
+
+	public Exemplar() {
+	}
 
 	public long getId() {
 		return id;
@@ -47,7 +48,7 @@ public class Exemplar  implements Serializable {
 
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
-	}	
+	}
 
 	public Livro getLivro() {
 		return livro;
@@ -71,11 +72,11 @@ public class Exemplar  implements Serializable {
 		builder.append("Exemplar\nId: ");
 		builder.append(id);
 		builder.append("\nQuantidade: ");
-		builder.append(quantidade);	
+		builder.append(quantidade);
 		builder.append("\nLivro: ");
 		builder.append(livro);
 		builder.append("\nFornecedor: ");
 		builder.append(fornecedor);
 		return builder.toString();
-	}	
+	}
 }

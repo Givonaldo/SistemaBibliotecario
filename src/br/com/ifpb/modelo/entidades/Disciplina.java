@@ -22,18 +22,17 @@ public class Disciplina implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_DISCIPLINA")
 	private long id;
-	
+
 	@Column(name = "NOME_DISCIPLINA")
 	private String nome;
-	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy="disciplina", targetEntity=Livro.class)
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "disciplina", targetEntity = Livro.class)
 	private Set<Livro> livros;
-	
+
 	@ManyToMany(mappedBy = "disciplinas")
 	private Set<Grupo> grupos;
-	
-	
-	public Disciplina(){
+
+	public Disciplina() {
 		this.livros = new HashSet<>();
 		this.grupos = new HashSet<>();
 	}
@@ -62,10 +61,10 @@ public class Disciplina implements Serializable {
 		this.livros = livros;
 	}
 
-	public void setLivros(Livro livro){
-		this.livros.add(livro);		
+	public void setLivros(Livro livro) {
+		this.livros.add(livro);
 	}
-	
+
 	public Set<Grupo> getGrupos() {
 		return grupos;
 	}
@@ -73,11 +72,11 @@ public class Disciplina implements Serializable {
 	public void setGrupos(Set<Grupo> grupos) {
 		this.grupos = grupos;
 	}
-	
-	public void SetGrupos(Grupo grupo){
+
+	public void SetGrupos(Grupo grupo) {
 		this.grupos.add(grupo);
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -88,7 +87,7 @@ public class Disciplina implements Serializable {
 		builder.append("\nLivros: ");
 		builder.append(livros);
 		builder.append("\nGrupos: ");
-		builder.append(grupos);		
+		builder.append(grupos);
 		return builder.toString();
-	}	
+	}
 }

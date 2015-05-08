@@ -11,7 +11,7 @@ public class JoinedDao extends Dao<Pessoa_Joined> {
 	public JoinedDao() {
 		this.em = Dao.getEntityManager();
 	}
-	
+
 	@Override
 	public void add(Pessoa_Joined pessoa) throws Exception {
 		try {
@@ -19,15 +19,15 @@ public class JoinedDao extends Dao<Pessoa_Joined> {
 			em.persist(pessoa);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}		
+		}
 	}
 
 	@Override
@@ -38,16 +38,16 @@ public class JoinedDao extends Dao<Pessoa_Joined> {
 			em.remove(p);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
-		}		
-		
+		}
+
 	}
 
 	@Override
@@ -59,17 +59,17 @@ public class JoinedDao extends Dao<Pessoa_Joined> {
 			em.getTransaction().commit();
 			return p;
 		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
-			}		
+			if (em.isOpen()) {
+				em.close();
+			}
 		}
 	}
-	
+
 	@Override
 	public void upDate(Pessoa_Joined pessoa) throws Exception {
 		try {
@@ -81,14 +81,14 @@ public class JoinedDao extends Dao<Pessoa_Joined> {
 			pj.setFone(pessoa.getFone());
 			em.merge(pj);
 			em.getTransaction().commit();
-		} catch (Exception e) {			
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
+		} catch (Exception e) {
+			if (em.isOpen()) {
+				em.getTransaction().rollback();
+			}
 			throw new Exception();
 		} finally {
-			if(em.isOpen()){
-				em.close();	
+			if (em.isOpen()) {
+				em.close();
 			}
 		}
 	}
