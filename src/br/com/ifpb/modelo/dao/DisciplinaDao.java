@@ -3,14 +3,13 @@ package br.com.ifpb.modelo.dao;
 import javax.persistence.EntityManager;
 
 import br.com.ifpb.modelo.entidades.Disciplina;
-import br.com.ifpb.modelo.exception.EntityNullException;
 
 public class DisciplinaDao extends Dao<Disciplina> {
 
 	private EntityManager em;
 	
 	public DisciplinaDao() {
-		em = getEM();
+		this.em = Dao.getEntityManager();
 	}
 	
 	@Override
@@ -20,54 +19,73 @@ public class DisciplinaDao extends Dao<Disciplina> {
 			em.persist(disciplina);
 			em.getTransaction().commit();
 		} catch (Exception e) {
+			if(em.isOpen()){
+				em.getTransaction().rollback();	
+			}			
 			throw new Exception();
 		} finally {
-			em.close();
-		}				
+			if(em.isOpen()){
+				em.close();	
+			}
+		}					
 	}
 
 	@Override
 	public Disciplina read(long codigo) throws Exception {
 		try {
 			em.getTransaction().begin();
-			em.find(Disciplina.class, codigo);
+			Disciplina d = em.find(Disciplina.class, codigo);
 			em.getTransaction().commit();
-			return em.find(Disciplina.class, codigo);
+			return d;
 		} catch (Exception e) {
-
+			if(em.isOpen()){
+				em.getTransaction().rollback();	
+			}			
+			throw new Exception();
 		} finally {
-			em.close();
-		}
-		return (Disciplina) em;
+			if(em.isOpen()){
+				em.close();	
+			}
+		}	
 	}
 
 	@Override
-	public void remove(Disciplina disciplina) throws EntityNullException {
-		try {
-			em.getTransaction().begin();
-			Disciplina d = em.find(Disciplina.class, disciplina.getId());
-			em.remove(d);
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			throw new EntityNullException();
-		} finally {
-			em.close();
-		}			
-	}
-
-	@Override
-	public void upDate(Disciplina disciplina, long codigo) throws EntityNullException {
+	public void remove(long codigo) throws Exception {
 		try {
 			em.getTransaction().begin();
 			Disciplina d = em.find(Disciplina.class, codigo);
+			em.remove(d);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			if(em.isOpen()){
+				em.getTransaction().rollback();	
+			}			
+			throw new Exception();
+		} finally {
+			if(em.isOpen()){
+				em.close();	
+			}
+		}				
+	}
+
+	@Override
+	public void upDate(Disciplina disciplina) throws Exception {
+		try {
+			em.getTransaction().begin();
+			Disciplina d = em.find(Disciplina.class, disciplina.getId());
 			d.setNome(disciplina.getNome());
 			em.merge(d);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			throw new EntityNullException();
+			if(em.isOpen()){
+				em.getTransaction().rollback();	
+			}			
+			throw new Exception();
 		} finally {
-			em.close();
-		}				
+			if(em.isOpen()){
+				em.close();	
+			}
+		}					
 	}
 
 }

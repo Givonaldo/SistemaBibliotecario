@@ -77,7 +77,5 @@ public class Exemplar  implements Serializable {
 		builder.append("\nFornecedor: ");
 		builder.append(fornecedor);
 		return builder.toString();
-	}
-	
-	
+	}	
 }

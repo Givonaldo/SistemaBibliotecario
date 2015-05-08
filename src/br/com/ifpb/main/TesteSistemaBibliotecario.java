@@ -9,10 +9,7 @@ public class TesteSistemaBibliotecario {
 
 	public static void main(String[] args) throws Exception {
 		
-		
-		
-		
-		
+				
 		
 		//Autor autor = new Autor();
 		//autor.setId(1L);

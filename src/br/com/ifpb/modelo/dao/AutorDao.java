@@ -3,14 +3,13 @@ package br.com.ifpb.modelo.dao;
 import javax.persistence.EntityManager;
 
 import br.com.ifpb.modelo.entidades.Autor;
-import br.com.ifpb.modelo.exception.EntityNullException;
 
 public class AutorDao extends Dao<Autor> {
 	
 	private EntityManager em;
 	
 	public AutorDao() {
-		em = getEM();
+		this.em = Dao.getEntityManager();
 	}
 	
 	@Override
@@ -20,54 +19,73 @@ public class AutorDao extends Dao<Autor> {
 			em.persist(autor);
 			em.getTransaction().commit();
 		} catch (Exception e) {
+			if(em.isOpen()){
+				em.getTransaction().rollback();	
+			}			
 			throw new Exception();
 		} finally {
-			em.close();
-		}		
+			if(em.isOpen()){
+				em.close();	
+			}
+		}			
 	}
 
 	@Override
 	public Autor read(long codigo) throws Exception {
 		try {
 			em.getTransaction().begin();
-			em.find(Autor.class, codigo);
+			Autor a = em.find(Autor.class, codigo);
 			em.getTransaction().commit();
-			return em.find(Autor.class, codigo);
+			return a;
 		} catch (Exception e) {
-
+			if(em.isOpen()){
+				em.getTransaction().rollback();	
+			}			
+			throw new Exception();
 		} finally {
-			em.close();
-		}
-		return (Autor) em;
+			if(em.isOpen()){
+				em.close();	
+			}
+		}	
 	}
 
 	@Override
-	public void remove(Autor autor) throws EntityNullException {
+	public void remove(long codigo) throws Exception {
 		try {
 			em.getTransaction().begin();
-			Autor e = em.find(Autor.class, autor.getId());
+			Autor e = em.find(Autor.class, codigo);
 			em.remove(e);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			throw new EntityNullException();
+			if(em.isOpen()){
+				em.getTransaction().rollback();	
+			}			
+			throw new Exception();
 		} finally {
-			em.close();
-		}		
+			if(em.isOpen()){
+				em.close();	
+			}
+		}			
 	}
 
 	@Override
-	public void upDate(Autor autor, long codigo) throws EntityNullException {
+	public void upDate(Autor autor) throws Exception {
 		try {
 			em.getTransaction().begin();
-			Autor a = em.find(Autor.class, codigo);
+			Autor a = em.find(Autor.class, autor.getId());
 			a.setNome(autor.getNome());
 			em.merge(a);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			throw new EntityNullException();
+			if(em.isOpen()){
+				em.getTransaction().rollback();	
+			}			
+			throw new Exception();
 		} finally {
-			em.close();
-		}		
+			if(em.isOpen()){
+				em.close();	
+			}
+		}			
 	}
 
 }

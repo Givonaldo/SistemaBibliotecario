@@ -2,79 +2,21 @@ package br.com.ifpb.modelo.dao;
 
 import javax.persistence.EntityManager;
 
-import br.com.ifpb.modelo.entidades.Exemplar;
+import br.com.ifpb.modelo.entidades.per_class.Pessoa_Per_Class;
 
-public class ExemplarDao extends Dao<Exemplar> {
+public class PerClassDao extends Dao<Pessoa_Per_Class> {
 
 	private EntityManager em;
+
+	public PerClassDao() {
+		this.em = Dao.getEntityManager();
+	}
 	
-	public ExemplarDao() {
-		em = Dao.getEntityManager();
-	}
-	
 	@Override
-	public void add(Exemplar exemplar) throws Exception {
+	public void add(Pessoa_Per_Class pessoa) throws Exception {
 		try {
 			em.getTransaction().begin();
-			em.persist(exemplar);
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
-			throw new Exception();
-		} finally {
-			if(em.isOpen()){
-				em.close();	
-			}
-		}			
-	}
-
-	@Override
-	public Exemplar read(long codigo) throws Exception {
-		try {
-			em.getTransaction().begin();
-			Exemplar e = em.find(Exemplar.class, codigo);
-			em.getTransaction().commit();
-			return e;
-		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
-			throw new Exception();
-		} finally {
-			if(em.isOpen()){
-				em.close();	
-			}
-		}	
-	}
-
-	@Override
-	public void remove(long codigo) throws Exception {
-		try {
-			em.getTransaction().begin();
-			Exemplar e = em.find(Exemplar.class, codigo);
-			em.remove(e);
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			if(em.isOpen()){
-				em.getTransaction().rollback();	
-			}			
-			throw new Exception();
-		} finally {
-			if(em.isOpen()){
-				em.close();	
-			}
-		}			
-	}
-
-	@Override
-	public void upDate(Exemplar exemplar) throws Exception {
-		try {
-			em.getTransaction().begin();
-			Exemplar e = em.find(Exemplar.class, exemplar.getId());
-			e.setQuantidade(exemplar.getQuantidade());		
-			em.merge(e);
+			em.persist(pessoa);
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			if(em.isOpen()){
@@ -86,6 +28,69 @@ public class ExemplarDao extends Dao<Exemplar> {
 				em.close();	
 			}
 		}		
+	}
+
+	@Override
+	public void remove(long cogido) throws Exception {
+		try {
+			em.getTransaction().begin();
+			Pessoa_Per_Class p = em.find(Pessoa_Per_Class.class, cogido);
+			em.remove(p);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			if(em.isOpen()){
+				em.getTransaction().rollback();	
+			}			
+			throw new Exception();
+		} finally {
+			if(em.isOpen()){
+				em.close();	
+			}
+		}		
+		
+	}
+
+	@Override
+	public Pessoa_Per_Class read(long codigo) throws Exception {
+		try {
+			em.getTransaction().begin();
+			em.find(Pessoa_Per_Class.class, codigo);
+			Pessoa_Per_Class p = em.find(Pessoa_Per_Class.class, codigo);
+			em.getTransaction().commit();
+			return p;
+		} catch (Exception e) {
+			if(em.isOpen()){
+				em.getTransaction().rollback();	
+			}			
+			throw new Exception();
+		} finally {
+			if(em.isOpen()){
+				em.close();	
+			}		
+		}
+	}
+	
+	@Override
+	public void upDate(Pessoa_Per_Class pessoa) throws Exception {
+		try {
+			em.getTransaction().begin();
+			Pessoa_Per_Class pc = em.find(Pessoa_Per_Class.class, pessoa.getId());
+			pc.setNome(pessoa.getNome());
+			pc.setMatricula(pessoa.getMatricula());
+			pc.setEndereco(pessoa.getEndereco());
+			pc.setFone(pessoa.getFone());
+			em.merge(pc);
+			em.getTransaction().commit();
+		} catch (Exception e) {			
+			if(em.isOpen()){
+				em.getTransaction().rollback();	
+			}			
+			throw new Exception();
+		} finally {
+			if(em.isOpen()){
+				em.close();	
+			}
+		}
 	}
 
 }

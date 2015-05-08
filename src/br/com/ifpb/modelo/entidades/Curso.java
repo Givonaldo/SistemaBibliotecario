@@ -1,6 +1,7 @@
 package br.com.ifpb.modelo.entidades;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
@@ -19,5 +20,12 @@ public class Curso implements Serializable {
     public void setDescricao(String nome) {
         this.nome = nome;
     }
-
+    
+    @Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("\n\tNome Curso: ");
+		builder.append(nome);
+		return builder.toString();
+	}
 }

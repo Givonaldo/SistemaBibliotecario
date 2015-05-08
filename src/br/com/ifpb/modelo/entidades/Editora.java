@@ -72,6 +72,4 @@ public class Editora implements Serializable {
 		return builder.toString();
 	}
 	
-	
-	
 }

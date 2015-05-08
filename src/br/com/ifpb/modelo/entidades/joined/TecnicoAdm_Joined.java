@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "JOINED_TECNICOS_ADM")
@@ -14,7 +15,7 @@ import javax.persistence.Temporal;
 public class TecnicoAdm_Joined extends Pessoa_Joined {
 
     @Column(name = "DATA_TECNICO_ADM")
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     private Date dataAdmissao;
     
     @Column(name = "CARGO_TECNICO_ADM")
@@ -42,9 +43,10 @@ public class TecnicoAdm_Joined extends Pessoa_Joined {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("TecnicoAdm_Joined \nData Admissao: ");
+		builder.append(super.toString());
+		builder.append("\nTECNICO_ADM JOINED\n\tData Admissao: ");
 		builder.append(dataAdmissao);
-		builder.append("\nCargo: ");
+		builder.append("\n\tCargo: ");
 		builder.append(cargo);
 		return builder.toString();
 	}
